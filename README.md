@@ -1,14 +1,29 @@
-# BitcoinTicker
 
-Questa è il branch con la versione modificata durante l'esercizio!
+# BitcoinTicker(APP ESERCIZIO)
 
-Learn to make iOS Apps with [The App Brewery](https://www.appbrewery.co) 📱 | Project Stub | (Swift 4.0/Xcode 9) - Bitcoin Ticker App
+L'app recupera il valore di Bitcoin nella valuta selezionata dall'utente.
+Utile per nozioni di:
 
-Beginner: Download the starter project files as .zip and extract the files to your desktop.
+Utilizzo di GitHub in XCode 9:
 
-Pro: Git clone to your Xcode projects folder.
+    ° creazione repository clonando progetto madre(appbrewery.com)
+    
+    ° creazione file gitIgnore
+    
+    ° creazione di branch "esercizio" per la modifica dell'app
+    
+    ° merge finale nel "master"
+    
+Utilizzo di COCOAPODS e seguenti librerie:
 
+   ° creazione file pod e installazione "Alamofire" e "SwiftyJSON" da terminale
+
+   ° personalizzazione funzioni di recupero e parsing JSON per messa a video
+    
 ## Finished App
 ![Finished App](http://i.giphy.com/l0HlQGzz2MQCKIBI4.gif)
+
+## Credits to
+[The App Brewery](https://www.appbrewery.co) 📱
 
 Copyright © The App Brewery
