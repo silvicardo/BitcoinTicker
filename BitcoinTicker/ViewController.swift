@@ -51,7 +51,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     //azione al momento della scelta della riga
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
        
-        print("Hai selezionato: \(currencyArray[row])")
+        print("Hai selezionato: \(currencyArray[row])\n")
         //creiamo un url personalizzato
         finalURL = baseURL + currencyArray[row]
         //tramite tale url otteniamo con Alamofire il JSON
@@ -68,12 +68,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         Alamofire.request(url, method: .get).responseJSON { response in
                 if response.result.isSuccess {//se abbiamo rispsta
                     
-                    print("Sucess! Got the bitcoin data")
+                    print("Successo! Ottenuti bitcoin datas\n")
                     //riversiamo la risposta in una costante di Tipo JSON
                     let bitcoinJSON : JSON = JSON(response.result.value!)
-                    print(bitcoinJSON)
+                    print("Questo è il JSON ottenuto: \n\n\(bitcoinJSON)\n")
                     //e la passiamo alla funzione preposta alla "lettura"
-                    //self.updateBitcoinData(json: bitcoinJSON)
+                    self.updateBitcoinData(json: bitcoinJSON)
 
                 } else {//altrimenti comunichiamo l'errore
                     print("Error: \(String(describing: response.result.error))")
@@ -83,24 +83,23 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 
     }
 
-    
-    
-    
-    
-//    //MARK: - JSON Parsing
-//    /***************************************************************/
+    //MARK: - JSON Parsing
+    /***************************************************************/
     
     func updateBitcoinData(json : JSON) {
-        
-        if let bitcoinResult = json["main"]["temp"].double {
-        
-//        weatherData.temperature = Int(round(tempResult!) - 273.15)
-//        weatherData.city = json["name"].stringValue
-//        weatherData.condition = json["weather"][0]["id"].intValue
-//        weatherData.weatherIconName =    weatherData.updateWeatherIcon(condition: weatherData.condition)
+        //se il json è valido avrà la chiave last e
+        if let bitcoinResult = json["last"].double {
+            //mettiamo nella label e in console il risultato
+            
+            print("Abbiamo un JSON Valido;\nil valore di bitcoin nella valuta scelta è: \(bitcoinResult)")
+            
+            self.bitcoinPriceLabel.text = String(bitcoinResult)
+            
+        } else {//altrimenti comunichiamo l'errore all'utente
+            
+            self.bitcoinPriceLabel.text = "Non Disponibile"
         }
-        
-//        updateUIWithWeatherData()
+
     }
     
 
