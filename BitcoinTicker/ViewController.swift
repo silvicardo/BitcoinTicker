@@ -11,7 +11,6 @@ import UIKit
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     
-    
     let baseURL = "https://apiv2.bitcoinaverage.com/indices/global/ticker/BTC"
     let currencyArray = ["AUD", "BRL","CAD","CNY","EUR","GBP","HKD","IDR","ILS","INR","JPY","MXN","NOK","NZD","PLN","RON","RUB","SEK","SGD","USD","ZAR"]
     var finalURL = ""
@@ -21,7 +20,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var currencyPicker: UIPickerView!
     
 
-    
+    //MARK: - Metodi Standard del VC
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,7 +30,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
 
     
-    //MARK: - UIPickerView delegate methods
+    //MARK: - Metodi UIPickerView Delegate
     
     //Una "sezione"
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -49,8 +48,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     //azione al momento della scelta della riga
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+       
         print("Hai selezionato: \(currencyArray[row])")
-        
+
+        finalURL = baseURL + currencyArray[row]
     }
     
     
